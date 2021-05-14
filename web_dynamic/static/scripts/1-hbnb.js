@@ -9,6 +9,7 @@ $(document).addEventListener("DOMContentLoaded", function() {
 	    else {
 		amenity_list = amenity_list.filter(":checked")
 	    }
+	    $('DIV.amenities H4').html(amenity_list.join(', '));
 	});
     });
 });
