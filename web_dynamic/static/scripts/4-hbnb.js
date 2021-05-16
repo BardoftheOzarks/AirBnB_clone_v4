@@ -1,4 +1,4 @@
-let amenityList = [];
+let amenityList = []; //global variable
 $(function () {
   $('input[type=checkbox]').change(function () {
     const dataId = $(this).attr('data-id');
@@ -6,7 +6,7 @@ $(function () {
     if ($(this).is(':checked')) {
       amenityList.push({ dataName: dataName, dataId: dataId });
     } else {
-      amenityList = amenityList.filter((each) => each !== dataName);
+      amenityList = amenityList.filter((each) => each.dataName !== dataName);
     }
     $('DIV.amenities H4').html(amenityList.map(each => each.dataName).join(', '));
   });
