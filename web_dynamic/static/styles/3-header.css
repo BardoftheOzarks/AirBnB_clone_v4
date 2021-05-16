@@ -20,11 +20,4 @@ header div#api_status {
 }
 header div#api_status.available {
     background: #ff545f;
-    float: right;
-    margin-top: 15px;
-    margin-right: 30px;
-    position: absolute;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
 }
