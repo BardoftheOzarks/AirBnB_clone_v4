@@ -1,13 +1,13 @@
 $(function () {
-  let amenity_list = [];
+  let amenityList = [];
   $('input[name=checkbox]').change(function () {
-    const data_id = $('#popover').get(0).id;
+    const dataId = $('#popover').get(0).id;
     if ($('INPUT').is(':checked')) {
-      amenity_list = amenity_list.push(data_id);
+      amenityList = amenityList.push(dataId);
     } else {
-      amenity_list = amenity_list.filter(':checked');
+      amenityList = amenityList.filter(':checked');
     }
-    $('DIV.amenities H4').html(amenity_list.join(', '));
+    $('DIV.amenities H4').html(amenityList.join(', '));
   });
 });
 $(function () {
@@ -24,8 +24,13 @@ $(function () {
   $.ajax({
     type: 'POST',
     url: 'http://0.0.0.0:5001/api/v1/places_search/',
-    data: {},
-    success: success,
-    contentType: application / json
+    data: '{}',
+    contentType: 'application/json',
+    success: function (data) {
+      for (let i = 0; i < data.length; i++) {
+        const place = data[i];
+        $('.places').append('<article><div class=“title_box”><h2>’ + place.name + ‘</h2><div class=“price_by_night”>$’ + place.price_by_night + ‘</div></div><div class=“information”><div class=“max_guest”>’ + place.max_guest + ‘Guest</div><div class=“number_rooms”>’ + place.number_rooms + ‘Bedroom</div><div class=“number_bathrooms”>’ + place.number_bathrooms + ‘Bathroom</div></div><div class=“description”>’ + place.description + ‘</div></article>');
+      }
+    }
   });
 });
