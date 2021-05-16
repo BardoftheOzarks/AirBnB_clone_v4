@@ -1,14 +1,13 @@
-$(document).addEventListener('DOMContentLoaded', function () {
-  $(function () {
-    let amenityList = [];
-    $('input[name=checkbox]').change(function () {
-      const dataId = $('#popover').get(0).id;
-      if ($('INPUT').is(':checked')) {
-        amenityList = amenityList.push(dataId);
-      } else {
-        amenityList = amenityList.filter(':checked');
-      }
-      $('DIV.amenities H4').html(amenityList.join(', '));
-    });
+$(function () {
+  let amenityList = [];
+  $('input[name=checkbox]').change(function () {
+    const dataId = $(this).attr('data-id');
+    const dataName = $(this).attr('data-name');
+    if ($('INPUT').is(':checked')) {
+      amenityList = amenityList.push(dataName);
+    } else {
+      amenityList = amenityList.filter(':checked');
+    }
+    $('DIV.amenities H4').html(amenityList.join(', '));
   });
 });
